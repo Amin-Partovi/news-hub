@@ -24,7 +24,7 @@ export function Request<Data extends unknown, Error extends unknown>({
   endpoint: string;
   config?: AxiosRequestConfig;
   method?: "POST" | "GET" | "PUT" | "PATCH" | "DELETE";
-  params?: any;
+  params?: Record<string, unknown>;
 }): Promise<AxiosResponse<any, any>> {
   return axios({
     params,

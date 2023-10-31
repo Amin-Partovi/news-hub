@@ -1,8 +1,13 @@
-import { useGuardianNewsQuery } from "queries";
-import React from "react";
+import {
+  useGuardianNewsQuery,
+  useNYTNewsQuery,
+  useNewsAPIQuery,
+} from "queries";
 
 function App() {
   const { data } = useGuardianNewsQuery();
+  const { data: nyt } = useNYTNewsQuery();
+  const { data: news } = useNewsAPIQuery();
 
   return <div>app</div>;
 }
