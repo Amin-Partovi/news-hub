@@ -22,13 +22,20 @@ interface Data {
 export type NewsAPIRootData = AxiosResponse<Data>;
 
 export interface NewsAPIRequestParams {
-  q?: string;
+  q?: string; //search
   searchIn?: "title" | "description" | "content";
-  sources?: string;
+  sources?:
+    | "business"
+    | "entertainment"
+    | "general"
+    | "health"
+    | "science"
+    | "sports"
+    | "technology"; //category
   domains?: "eg bbc.co.uk" | "techcrunch.com" | "engadget.com";
   excludeDomains?: "eg bbc.co.uk" | "techcrunch.com" | "engadget.com";
-  from?: Date;
-  to?: Date;
+  from?: Date; //date
+  to?: Date; //date
   language?:
     | "ar"
     | "de"
@@ -48,3 +55,5 @@ export interface NewsAPIRequestParams {
   pageSize?: number;
   page?: number;
 }
+
+// author is missed

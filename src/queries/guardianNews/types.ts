@@ -32,14 +32,31 @@ interface Result {
 
 export type GuardianRootData = AxiosResponse<Data>;
 
+type Field =
+  | "body"
+  | "lastModified"
+  | "thumbnail"
+  | "publication"
+  | "all"
+  | "headline";
+
+type Reference = "author" | "isbn";
+
+type Tag = "publication" | "blog" | "contributor";
+
 export interface GuardianRequestParams {
-  q?: string;
+  q?: string; //search
   "query-fields"?: "body" | "thumbnail";
   "order-by"?: "newest" | "oldest" | "relevance";
   page?: number;
   "page-size"?: number;
-  from_date?: Date;
-  to_date?: Date;
-  section?: string;
+  from_date?: Date; //date
+  to_date?: Date; //date
+  section?: string; //category
   tag?: string;
+  "show-fields"?: Field | Field[];
+  "show-references"?: Reference | Reference[];
+  "show-tags"?: Tag | Tag[];
 }
+
+// author is missed

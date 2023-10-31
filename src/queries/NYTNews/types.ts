@@ -84,8 +84,8 @@ interface Data {
 export type NYTRootData = AxiosResponse<Data>;
 
 export interface NYTRequestParams {
-  begin_date?: number;
-  end_date?: number;
+  begin_date?: number; //date
+  end_date?: number; //date
   facet?: boolean;
   facet_fields?:
     | "day_of_week"
@@ -101,7 +101,10 @@ export interface NYTRequestParams {
   facet_filter?: boolean;
   fl?: string;
   fq?: string;
-  q?: string;
+  q?: string; //search
   sort?: "newest" | "oldest" | "relevance";
   page?: number;
+  source: string; //category
 }
+
+// author is missed

@@ -2,12 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { ROUTES, Request } from "utils";
 import { NewsAPIRequestParams, NewsAPIRootData } from "./types";
 
+const INITIAL_PARAMS: NewsAPIRequestParams = {
+  domains: "techcrunch.com",
+  pageSize: 10,
+};
+
 function getNewsAPI(params?: NewsAPIRequestParams) {
   return Request<NewsAPIRootData, Error>({
     endpoint: ROUTES.getNewsList,
     params: {
       apiKey: process.env.REACT_APP_NEWS_API_KEY as string,
-      domains: "techcrunch.com",
+      ...INITIAL_PARAMS,
       ...params,
     },
   });
