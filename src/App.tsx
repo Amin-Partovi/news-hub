@@ -9,8 +9,6 @@ function App() {
   const { data: nyt } = useNYTNewsQuery();
   const { data: news } = useNewsAPIQuery();
 
-  console.log({ data, nyt, news });
-
   return <div>app</div>;
 }
 
