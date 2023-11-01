@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

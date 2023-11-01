@@ -17,11 +17,12 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@component/*": ["./src/components/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@queries/*": ["./src/queries/*"]
+      "@component/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
+      "@queries/*": ["queries/*"],
+      "@texts/*": ["texts/*"]
     }
   },
   "include": ["src"]

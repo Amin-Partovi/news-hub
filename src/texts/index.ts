@@ -1,0 +1,1 @@
+export { TEXTS } from "./texts";

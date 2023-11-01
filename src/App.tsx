@@ -1,3 +1,4 @@
+import { PageLayout } from "components/layouts";
 import {
   useGuardianNewsQuery,
   useNYTNewsQuery,
@@ -9,7 +10,7 @@ function App() {
   const { data: nyt } = useNYTNewsQuery();
   const { data: news } = useNewsAPIQuery();
 
-  return <div>app</div>;
+  return <PageLayout>app</PageLayout>;
 }
 
 export default App;

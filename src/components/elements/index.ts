@@ -20,3 +20,5 @@ export {
   CardContent,
 } from "./card/Card";
 export { Button, buttonVariants } from "./button/Button";
+
+export { default as Logo } from "./icons/Logo";

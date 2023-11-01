@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import deepExtend from "deep-extend";
 
-import { objectToQueryString } from "./objectToQueryString";
+import { objectToQueryString } from "utils";
 
 const DEFAULT_API_CONFIG = {
   returnRejectedPromiseOnError: true,
