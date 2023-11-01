@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { ROUTES, Request } from "utils";
 import { NewsAPIRequestParams, NewsAPIRootData } from "./types";
+import { CommonQueryParams } from "types";
 
 const INITIAL_PARAMS: NewsAPIRequestParams = {
   domains: "techcrunch.com",
   pageSize: 10,
 };
 
-function getNewsAPI(params?: NewsAPIRequestParams) {
+function getNewsAPI(params?: CommonQueryParams) {
   return Request<NewsAPIRootData, Error>({
     endpoint: ROUTES.getNewsList,
     params: {
@@ -18,10 +19,11 @@ function getNewsAPI(params?: NewsAPIRequestParams) {
   });
 }
 
-export function useNewsAPIQuery(params?: NewsAPIRequestParams) {
+export function useNewsAPIQuery(params?: CommonQueryParams, enabled?: boolean) {
   return useQuery({
-    queryKey: ["news-api"],
+    queryKey: ["news-api", params],
     queryFn: () => getNewsAPI(params),
     select: (data: NewsAPIRootData) => data.data,
+    enabled,
   });
 }

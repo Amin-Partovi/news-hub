@@ -50,8 +50,8 @@ export interface GuardianRequestParams {
   "order-by"?: "newest" | "oldest" | "relevance";
   page?: number;
   "page-size"?: number;
-  from_date?: Date; //date
-  to_date?: Date; //date
+  from_date?: string | Date; //date
+  to_date?: string | Date; //date
   section?: string; //category
   tag?: string;
   "show-fields"?: Field | Field[];

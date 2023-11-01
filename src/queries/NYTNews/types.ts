@@ -104,7 +104,7 @@ export interface NYTRequestParams {
   q?: string; //search
   sort?: "newest" | "oldest" | "relevance";
   page?: number;
-  source: string; //category
+  source?: string; //category
 }
 
 // author is missed

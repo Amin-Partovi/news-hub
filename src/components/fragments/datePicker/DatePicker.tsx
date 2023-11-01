@@ -17,9 +17,10 @@ import { Calendar } from "components/fragments";
 
 interface Props {
   onChange: (value: Date) => void;
+  placeholder: string;
 }
 
-export function DatePicker({ onChange }: Props) {
+export function DatePicker({ onChange, placeholder }: Props) {
   const [date, setDate] = React.useState<Date>();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export function DatePicker({ onChange }: Props) {
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? format(date, "PPP") : <span>{placeholder}</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">

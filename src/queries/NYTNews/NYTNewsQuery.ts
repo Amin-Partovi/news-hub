@@ -1,22 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import { ROUTES, Request } from "utils";
 import { NYTRootData } from "./types";
-import { NewsAPIRequestParams } from "queries/newsAPI/types";
+import { CommonQueryParams } from "types";
+import { transformData } from "./transformData";
 
-function getNYTNews(params?: NewsAPIRequestParams) {
+function getNYTNews(params?: CommonQueryParams) {
+  const modifiedParams = transformData(params);
   return Request<NYTRootData, Error>({
     endpoint: ROUTES.getNYTNewsList,
     params: {
       "api-key": process.env.REACT_APP_NYT_API_KEY as string,
-      ...params,
+      ...modifiedParams,
     },
   });
 }
 
-export function useNYTNewsQuery(params?: NewsAPIRequestParams) {
+export function useNYTNewsQuery(params?: CommonQueryParams, enabled?: boolean) {
   return useQuery({
-    queryKey: ["NYT-news"],
+    queryKey: ["NYT-news", params],
     queryFn: () => getNYTNews(params),
     select: (data: NYTRootData) => data.data.response,
+    enabled,
   });
 }

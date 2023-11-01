@@ -1,0 +1,1 @@
+export { useFetchNews } from "./useFetchNews";
