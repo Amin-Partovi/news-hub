@@ -6,11 +6,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "components/elements";
-import { DatePicker } from "components/fragments";
+import { DateRangePicker } from "components/fragments";
 import { TEXTS } from "texts/texts";
 import { CATEGORIES, SOURCES } from "mockData";
 import { useSearchParams } from "react-router-dom";
 import { QueryKeyName, commonQueryParamKeys } from "types";
+import { DateRange } from "react-day-picker";
 
 const Filters = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -21,8 +22,8 @@ const Filters = () => {
   }
 
   return (
-    <div className="grid grid-cols-12 gap-6">
-      <div className="col-span-3">
+    <div className="grid grid-cols-1 md:grid-cols-2  gap-x-6 gap-y-2 sm:sticky top-0 z-10  p-2 bg-gray-100 rounded-md">
+      <div className="col-span-1">
         <Input
           placeholder={TEXTS.SEARCH_PLACEHOLDER}
           onChange={(event) => {
@@ -33,33 +34,29 @@ const Filters = () => {
           }}
         />
       </div>
-      <div className="flex gap-2 col-span-3">
-        <DatePicker
-          onChange={(value) => {
-            handleChange({
-              key: commonQueryParamKeys.FROM,
-              value: value.toString(),
-            });
+      <div className="flex flex-col sm:flex-row gap-2 col-span-1">
+        <DateRangePicker
+          onChange={(value: DateRange) => {
+            if (value.from)
+              handleChange({
+                key: commonQueryParamKeys.FROM,
+                value: value.from.toString(),
+              });
+            if (value.to)
+              handleChange({
+                key: commonQueryParamKeys.FROM,
+                value: value.to.toString(),
+              });
           }}
-          placeholder={TEXTS.FROM}
-        />
-        <DatePicker
-          onChange={(value) => {
-            handleChange({
-              key: commonQueryParamKeys.TO,
-              value: value.toString(),
-            });
-          }}
-          placeholder={TEXTS.TO}
         />
       </div>
-      <div className="flex gap-2 col-span-3">
+      <div className="flex gap-2 col-span-1 flex-col sm:flex-row">
         <Select
           onValueChange={(value) => {
             handleChange({ key: commonQueryParamKeys.CATEGORY, value });
           }}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger>
             <SelectValue placeholder={TEXTS.CATEGORIES} />
           </SelectTrigger>
           <SelectContent>
@@ -73,7 +70,7 @@ const Filters = () => {
             handleChange({ key: commonQueryParamKeys.SOURCE, value });
           }}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger>
             <SelectValue placeholder={TEXTS.SOURCES} />
           </SelectTrigger>
           <SelectContent>
@@ -83,7 +80,7 @@ const Filters = () => {
           </SelectContent>
         </Select>
       </div>
-      <div className="col-span-3">
+      <div className="col-span-1">
         <Input placeholder={TEXTS.AUTHOR_NAME} />
       </div>
     </div>

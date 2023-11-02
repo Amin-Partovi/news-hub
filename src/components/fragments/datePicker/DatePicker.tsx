@@ -18,9 +18,14 @@ import { Calendar } from "components/fragments";
 interface Props {
   onChange: (value: Date) => void;
   placeholder: string;
+  isDateInvalidCallback?: (date: Date) => boolean;
 }
 
-export function DatePicker({ onChange, placeholder }: Props) {
+export function DatePicker({
+  onChange,
+  placeholder,
+  isDateInvalidCallback,
+}: Props) {
   const [date, setDate] = React.useState<Date>();
 
   useEffect(() => {
@@ -34,7 +39,7 @@ export function DatePicker({ onChange, placeholder }: Props) {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
+            "w-full justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
@@ -48,6 +53,7 @@ export function DatePicker({ onChange, placeholder }: Props) {
           selected={date}
           onSelect={setDate}
           initialFocus
+          disabled={isDateInvalidCallback}
         />
       </PopoverContent>
     </Popover>

@@ -8,14 +8,14 @@ const Home = () => {
   const { guardianNews, news, nytNews } = useFetchNews();
 
   return (
-    <div>
+    <>
       <Filters />
-      <div className="news-grid">
+      <div className="news-grid py-6">
         <GuardianNewsList news={guardianNews} />
         <NYTNewsList news={nytNews} />
         <NewsList news={news} />
       </div>
-    </div>
+    </>
   );
 };
 

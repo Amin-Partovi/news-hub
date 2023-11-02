@@ -28,6 +28,16 @@ body,
     grid-template-columns: repeat(auto-fill, minmax(348px, 1fr));
     gap: 16px;
   }
+
+  .gradient-bg {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      180deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(0, 98, 18, 1) 63%,
+      rgba(10, 115, 0, 1) 100%
+    );
+  }
 }
 
 @layer base {
