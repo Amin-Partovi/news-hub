@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-interface Doc {
+export interface NYTArticle {
   abstract: string;
   web_url: string;
   snippet: string;
@@ -71,7 +71,7 @@ interface Byline {
 }
 
 interface Response {
-  docs: Doc[];
+  docs: NYTArticle[];
   meta: { hits: number; offset: number; time: number };
 }
 

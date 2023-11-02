@@ -23,7 +23,7 @@ export function useNewsAPIQuery(params?: CommonQueryParams, enabled?: boolean) {
   return useQuery({
     queryKey: ["news-api", params],
     queryFn: () => getNewsAPI(params),
-    select: (data: NewsAPIRootData) => data.data,
+    select: (data: NewsAPIRootData) => data.data.articles,
     enabled,
   });
 }

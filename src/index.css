@@ -22,6 +22,14 @@ body,
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(348px, 1fr));
+    gap: 16px;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -13,10 +13,31 @@ interface Response {
   currentPage: number;
   pages: number;
   orderBy: string;
-  results: Result[];
+  results: GuardianArticle[];
 }
 
-interface Result {
+interface TagResponse {
+  id: string;
+  type: string;
+  webTitle: string;
+  webUrl: string;
+  apiUrl: string;
+  references: any[];
+  bio: string;
+  bylineImageUrl: string;
+  bylineLargeImageUrl: string;
+  firstName: string;
+  lastName: string;
+}
+
+interface FieldResponse {
+  body: string;
+  lastModified: string;
+  publication: string;
+  thumbnail: string;
+}
+
+export interface GuardianArticle {
   id: string;
   type: string;
   sectionId: string;
@@ -28,6 +49,8 @@ interface Result {
   isHosted: boolean;
   pillarId: string;
   pillarName: string;
+  fields: FieldResponse;
+  tags: TagResponse[];
 }
 
 export type GuardianRootData = AxiosResponse<Data>;

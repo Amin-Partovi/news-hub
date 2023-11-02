@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-interface Article {
+export interface NewsAPIArticle {
   title: string;
   author: string;
   source: Source;
@@ -16,7 +16,7 @@ interface Source {
 interface Data {
   status: "ok" | "error";
   totalResults: number;
-  articles: Article;
+  articles: NewsAPIArticle[];
 }
 
 export type NewsAPIRootData = AxiosResponse<Data>;

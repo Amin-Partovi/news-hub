@@ -19,7 +19,7 @@ export function useNYTNewsQuery(params?: CommonQueryParams, enabled?: boolean) {
   return useQuery({
     queryKey: ["NYT-news", params],
     queryFn: () => getNYTNews(params),
-    select: (data: NYTRootData) => data.data.response,
+    select: (data: NYTRootData) => data.data.response.docs,
     enabled,
   });
 }

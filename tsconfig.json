@@ -18,12 +18,13 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@component/*": ["components/*"],
+      "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
       "@hooks/*": ["hooks/*"],
       "@queries/*": ["queries/*"],
-      "@texts/*": ["texts/*"]
+      "@texts/*": ["texts/*"],
+      "@assets/*": ["assets/*"]
     }
   },
   "include": ["src"]
