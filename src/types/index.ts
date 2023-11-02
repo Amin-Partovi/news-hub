@@ -1,2 +1,2 @@
-export { commonQueryParamKeys } from "./queryTypes";
+export { CommonQueryParamKeys } from "./queryTypes";
 export type { CommonQueryParams, QueryKeyName } from "./queryTypes";

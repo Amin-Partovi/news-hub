@@ -6,12 +6,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "components/elements";
-import { DateRangePicker } from "components/fragments";
+import { DatePicker } from "components/fragments";
 import { TEXTS } from "texts/texts";
 import { CATEGORIES, SOURCES } from "mockData";
 import { useSearchParams } from "react-router-dom";
-import { QueryKeyName, commonQueryParamKeys } from "types";
-import { DateRange } from "react-day-picker";
+import { QueryKeyName, CommonQueryParamKeys } from "types";
+import { ChangeEvent, useCallback } from "react";
+import { debounce } from "utils";
 
 const Filters = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -21,39 +22,45 @@ const Filters = () => {
     setSearchParams({ ...queries, [key]: value });
   }
 
+  const handleChangeInput = useCallback(
+    debounce((event: ChangeEvent<HTMLInputElement>) =>
+      handleChange({ key: CommonQueryParamKeys.Q, value: event.target.value })
+    ),
+    []
+  );
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2  gap-x-6 gap-y-2 sm:sticky top-0 z-10  p-2 bg-gray-100 rounded-md">
       <div className="col-span-1">
         <Input
           placeholder={TEXTS.SEARCH_PLACEHOLDER}
-          onChange={(event) => {
-            handleChange({
-              key: commonQueryParamKeys.Q,
-              value: event.target.value,
-            });
-          }}
+          onChange={handleChangeInput}
         />
       </div>
       <div className="flex flex-col sm:flex-row gap-2 col-span-1">
-        <DateRangePicker
-          onChange={(value: DateRange) => {
-            if (value.from)
-              handleChange({
-                key: commonQueryParamKeys.FROM,
-                value: value.from.toString(),
-              });
-            if (value.to)
-              handleChange({
-                key: commonQueryParamKeys.FROM,
-                value: value.to.toString(),
-              });
+        <DatePicker
+          onChange={(value) => {
+            handleChange({
+              key: CommonQueryParamKeys.FROM,
+              value: value.toString(),
+            });
           }}
+          placeholder={TEXTS.FROM}
+        />
+        <DatePicker
+          onChange={(value) => {
+            handleChange({
+              key: CommonQueryParamKeys.TO,
+              value: value.toString(),
+            });
+          }}
+          placeholder={TEXTS.TO}
         />
       </div>
       <div className="flex gap-2 col-span-1 flex-col sm:flex-row">
         <Select
           onValueChange={(value) => {
-            handleChange({ key: commonQueryParamKeys.CATEGORY, value });
+            handleChange({ key: CommonQueryParamKeys.CATEGORY, value });
           }}
         >
           <SelectTrigger>
@@ -67,7 +74,7 @@ const Filters = () => {
         </Select>
         <Select
           onValueChange={(value) => {
-            handleChange({ key: commonQueryParamKeys.SOURCE, value });
+            handleChange({ key: CommonQueryParamKeys.SOURCE, value });
           }}
         >
           <SelectTrigger>

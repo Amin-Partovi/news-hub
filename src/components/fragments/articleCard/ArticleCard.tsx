@@ -45,7 +45,7 @@ const ArticleCard = ({
           width={100}
           src={logo}
           alt="news source"
-          className="absolute left-2 bottom-2"
+          className="absolute left-2 bottom-2 z-10"
         />
       </a>
     </Card>

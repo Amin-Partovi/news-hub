@@ -1,6 +1,6 @@
 import { SOURCES, CATEGORIES } from "mockData";
 
-export const commonQueryParamKeys = {
+export const CommonQueryParamKeys = {
   Q: "q",
   CATEGORY: "category",
   FROM: "from",
@@ -8,8 +8,8 @@ export const commonQueryParamKeys = {
   SOURCE: "source",
 } as const;
 
-type Keys = keyof typeof commonQueryParamKeys;
-export type QueryKeyName = (typeof commonQueryParamKeys)[Keys];
+type Keys = keyof typeof CommonQueryParamKeys;
+export type QueryKeyName = (typeof CommonQueryParamKeys)[Keys];
 
 type SourceKeys = keyof typeof SOURCES;
 export type SourceValue = (typeof SOURCES)[SourceKeys];
