@@ -2,7 +2,7 @@ import { dateToShortFormat } from "utils";
 import { Card, CardContent, CardHeader, CardTitle } from "components/elements";
 import ArticleImage from "./ArticleImage";
 
-interface Props {
+export interface ArticleCardProps {
   img?: string;
   sectionName?: string;
   author: string;
@@ -20,7 +20,7 @@ const ArticleCard = ({
   title,
   webUrl,
   logo,
-}: Props) => {
+}: ArticleCardProps) => {
   return (
     <Card>
       <a href={webUrl} target="_blank" rel="noreferrer">
