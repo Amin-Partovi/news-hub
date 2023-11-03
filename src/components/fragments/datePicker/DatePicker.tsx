@@ -18,14 +18,10 @@ import { Calendar } from "components/fragments";
 interface Props {
   onChange: (value: Date) => void;
   placeholder: string;
-  isDateInvalidCallback?: (date: Date) => boolean;
+  initialValue: string | null;
 }
 
-export function DatePicker({
-  onChange,
-  placeholder,
-  isDateInvalidCallback,
-}: Props) {
+export function DatePicker({ onChange, placeholder, initialValue }: Props) {
   const [date, setDate] = React.useState<Date>();
 
   useEffect(() => {
@@ -53,7 +49,6 @@ export function DatePicker({
           selected={date}
           onSelect={setDate}
           initialFocus
-          disabled={isDateInvalidCallback}
         />
       </PopoverContent>
     </Popover>

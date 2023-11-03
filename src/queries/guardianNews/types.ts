@@ -50,7 +50,7 @@ export interface GuardianArticle {
   pillarId: string;
   pillarName: string;
   fields: FieldResponse;
-  tags: TagResponse[];
+  tags: TagResponse[] | [];
 }
 
 export type GuardianRootData = AxiosResponse<Data>;

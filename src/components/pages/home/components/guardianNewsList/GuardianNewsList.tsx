@@ -13,7 +13,7 @@ const GuardianNewsList = ({ news }: { news?: GuardianArticle[] }) => {
         <ArticleCard
           title={article.webTitle}
           img={article.fields.thumbnail}
-          author={article.tags[0].webTitle}
+          author={article.tags[0]?.webTitle}
           sectionName={article.sectionName}
           pubDate={article.webPublicationDate}
           webUrl={article.webUrl}
