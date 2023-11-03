@@ -8,4 +8,5 @@ export const TEXTS = {
   CATEGORIES: "Categories",
   SOURCES: "Sources",
   AUTHOR_NAME: "Search by author",
+  NOT_FOUND: "Results Not Found",
 };

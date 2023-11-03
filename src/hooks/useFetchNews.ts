@@ -16,20 +16,21 @@ export function useFetchNews() {
     [searchParams]
   );
 
-  const { data: guardianNews } = useGuardianNewsQuery(
-    { ...queryParams },
-    searchParams.get("source") === SOURCES.GUARDIAN ||
-      searchParams.get("source") === SOURCES.ALL ||
-      !searchParams.get("source")
-  );
+  const { data: guardianNews, isFetching: isFetchingGuardian } =
+    useGuardianNewsQuery(
+      { ...queryParams },
+      searchParams.get("source") === SOURCES.GUARDIAN ||
+        searchParams.get("source") === SOURCES.ALL ||
+        !searchParams.get("source")
+    );
 
-  const { data: nytNews } = useNYTNewsQuery(
+  const { data: nytNews, isFetching: isFetchingNYT } = useNYTNewsQuery(
     { ...queryParams },
     searchParams.get("source") === SOURCES.NYT ||
       searchParams.get("source") === SOURCES.ALL ||
       !searchParams.get("source")
   );
-  const { data: news } = useNewsAPIQuery(
+  const { data: news, isFetching: isFetchingNewsAPI } = useNewsAPIQuery(
     { ...queryParams },
     searchParams.get("source") === SOURCES.NEW_API ||
       searchParams.get("source") === SOURCES.ALL ||
@@ -51,5 +52,10 @@ export function useFetchNews() {
     );
   }, [searchParams, news]);
 
-  return { guardianNews, nytNews, news: filteredNewsByAuthor };
+  return {
+    guardianNews,
+    nytNews,
+    news: filteredNewsByAuthor,
+    isFetching: isFetchingGuardian || isFetchingNYT || isFetchingNewsAPI,
+  };
 }
