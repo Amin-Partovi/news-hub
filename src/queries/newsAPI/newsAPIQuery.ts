@@ -6,6 +6,7 @@ import { CommonQueryParams } from "types";
 const INITIAL_PARAMS: NewsAPIRequestParams = {
   domains: "techcrunch.com",
   pageSize: 10,
+  language: "en",
 };
 
 function getNewsAPI(params?: CommonQueryParams) {

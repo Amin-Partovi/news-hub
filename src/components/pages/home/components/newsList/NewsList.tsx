@@ -1,7 +1,6 @@
-import React from "react";
-import { NewsAPIArticle } from "queries";
-import { ArticleCard } from "components/fragments";
 import NewsAPILogo from "assets/newsAPI-logo.png";
+import { ArticleCard } from "components/fragments";
+import { NewsAPIArticle } from "queries";
 
 const NewsList = ({ news }: { news?: NewsAPIArticle[] }) => {
   if (!news || !news.length) {

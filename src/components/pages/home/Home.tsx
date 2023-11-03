@@ -1,7 +1,7 @@
 import { useFetchNews } from "hooks/useFetchNews";
+import NYTNewsList from "./components/NYTNewsList/NYTNewsList";
 import Filters from "./components/filters/Filters";
 import GuardianNewsList from "./components/guardianNewsList/GuardianNewsList";
-import NYTNewsList from "./components/NYTNewsList/NYTNewsList";
 import NewsList from "./components/newsList/NewsList";
 
 const Home = () => {

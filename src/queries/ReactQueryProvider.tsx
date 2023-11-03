@@ -4,7 +4,7 @@ import React from "react";
 const DEFAULT_CACHE_TIME = 5 * 60 * 1000;
 const DEFAULT_STALE_TIME = 1 * 60 * 1000;
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       gcTime: DEFAULT_CACHE_TIME,

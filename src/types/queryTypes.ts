@@ -6,6 +6,7 @@ export const CommonQueryParamKeys = {
   FROM: "from",
   TO: "to",
   SOURCE: "source",
+  AUTHOR: "author",
 } as const;
 
 type Keys = keyof typeof CommonQueryParamKeys;
@@ -23,4 +24,5 @@ export type CommonQueryParams = Partial<{
   category: CategoryValue;
   from: string;
   to: string;
+  author: string;
 }>;

@@ -1,5 +1,8 @@
 export { useNYTNewsQuery } from "./NYTNews/NYTNewsQuery";
-export { default as ReactQueryProvider } from "./ReactQueryProvider";
+export {
+  default as ReactQueryProvider,
+  queryClient,
+} from "./ReactQueryProvider";
 export { useGuardianNewsQuery } from "./guardianNews/guardianNewsQuery";
 export type { GuardianArticle } from "./guardianNews/types";
 export { useNewsAPIQuery } from "./newsAPI/newsAPIQuery";

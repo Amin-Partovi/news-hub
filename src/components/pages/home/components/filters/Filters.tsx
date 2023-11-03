@@ -17,22 +17,30 @@ import { debounce } from "utils";
 const Filters = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
 
   const handleDebouncedInput = useCallback(
-    debounce((value: string) =>
-      handleChange({ key: CommonQueryParamKeys.Q, value })
+    debounce(({ value, key }: { value: string; key: QueryKeyName }) =>
+      handleChange({ key, value })
     ),
     []
   );
 
   useEffect(() => {
     setSearchTerm(searchParams.get(CommonQueryParamKeys.Q) ?? "");
+    setAuthor(searchParams.get(CommonQueryParamKeys.AUTHOR) ?? "");
   }, [searchParams]);
 
-  function handleChangeInput(event: ChangeEvent<HTMLInputElement>) {
+  function handleChangeSearchTerm(event: ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     setSearchTerm(value);
-    handleDebouncedInput(value);
+    handleDebouncedInput({ key: CommonQueryParamKeys.Q, value });
+  }
+
+  function handleChangeAuthor(event: ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    setAuthor(value);
+    handleDebouncedInput({ key: CommonQueryParamKeys.AUTHOR, value });
   }
 
   function handleChange({ key, value }: { key: QueryKeyName; value: string }) {
@@ -41,11 +49,11 @@ const Filters = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2  gap-x-6 gap-y-2 sm:sticky top-0 z-10  p-2 bg-gray-100 rounded-md">
+    <div className="grid grid-cols-1 md:grid-cols-2  gap-x-6 gap-y-2 sm:sticky top-0 z-20  p-2 bg-gray-100 rounded-md">
       <div className="col-span-1">
         <Input
           placeholder={TEXTS.SEARCH_PLACEHOLDER}
-          onChange={handleChangeInput}
+          onChange={handleChangeSearchTerm}
           value={searchTerm}
         />
       </div>
@@ -104,7 +112,11 @@ const Filters = () => {
         </Select>
       </div>
       <div className="col-span-1">
-        <Input placeholder={TEXTS.AUTHOR_NAME} />
+        <Input
+          placeholder={TEXTS.AUTHOR_NAME}
+          onChange={handleChangeAuthor}
+          value={author}
+        />
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
+import { SOURCES } from "mockData";
 import {
   useGuardianNewsQuery,
   useNYTNewsQuery,
   useNewsAPIQuery,
 } from "queries";
-import { SOURCES } from "mockData";
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { CommonQueryParams } from "types";
+import { CommonQueryParamKeys, CommonQueryParams } from "types";
 
 export function useFetchNews() {
   const [searchParams] = useSearchParams({});
@@ -36,5 +36,20 @@ export function useFetchNews() {
       !searchParams.get("source")
   );
 
-  return { guardianNews, nytNews, news };
+  // filter news api result client side
+
+  const filteredNewsByAuthor = useMemo(() => {
+    if (!searchParams.get(CommonQueryParamKeys.AUTHOR)) {
+      return news;
+    }
+    return news?.filter((article) =>
+      article.author
+        ?.toLowerCase()
+        .includes(
+          searchParams.get(CommonQueryParamKeys.AUTHOR)?.toLowerCase() as string
+        )
+    );
+  }, [searchParams, news]);
+
+  return { guardianNews, nytNews, news: filteredNewsByAuthor };
 }
