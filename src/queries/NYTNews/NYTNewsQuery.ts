@@ -15,6 +15,14 @@ function getNYTNews(params?: CommonQueryParams) {
   });
 }
 
+export const NYTNewsQueryKeys = Object.freeze({
+  all: ["NYT-news"],
+  list: (params?: CommonQueryParams) => [
+    ...NYTNewsQueryKeys.all,
+    ...Object.values(params ?? {}),
+  ],
+});
+
 export function useNYTNewsQuery(params?: CommonQueryParams, enabled?: boolean) {
   return useQuery({
     queryKey: ["NYT-news", params],

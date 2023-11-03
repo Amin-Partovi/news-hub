@@ -25,9 +25,12 @@ export function DatePicker({ onChange, placeholder, initialValue }: Props) {
   const [date, setDate] = React.useState<Date>();
 
   useEffect(() => {
-    if (!date) return;
-    onChange(date);
-  }, [date, onChange]);
+    if (date) onChange(date);
+  }, [date]);
+
+  useEffect(() => {
+    if (initialValue) setDate(new Date(initialValue));
+  }, [initialValue]);
 
   return (
     <Popover>
@@ -49,6 +52,7 @@ export function DatePicker({ onChange, placeholder, initialValue }: Props) {
           selected={date}
           onSelect={setDate}
           initialFocus
+          disabled={(date) => date > new Date()}
         />
       </PopoverContent>
     </Popover>

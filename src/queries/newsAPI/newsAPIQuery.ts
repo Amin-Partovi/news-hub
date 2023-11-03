@@ -20,6 +20,14 @@ function getNewsAPI(params?: CommonQueryParams) {
   });
 }
 
+export const newsAPIQueryKeys = Object.freeze({
+  all: ["news-api"],
+  list: (params?: CommonQueryParams) => [
+    ...newsAPIQueryKeys.all,
+    ...Object.values(params ?? {}),
+  ],
+});
+
 export function useNewsAPIQuery(params?: CommonQueryParams, enabled?: boolean) {
   return useQuery({
     queryKey: ["news-api", params],

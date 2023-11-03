@@ -43,10 +43,13 @@ const Filters = () => {
     handleDebouncedInput({ key: CommonQueryParamKeys.AUTHOR, value });
   }
 
-  function handleChange({ key, value }: { key: QueryKeyName; value: string }) {
-    const queries = Object.fromEntries([...searchParams]);
-    setSearchParams({ ...queries, [key]: value });
-  }
+  const handleChange = useCallback(
+    ({ key, value }: { key: QueryKeyName; value: string }) => {
+      const queries = Object.fromEntries([...searchParams]);
+      setSearchParams({ ...queries, [key]: value });
+    },
+    []
+  );
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2  gap-x-6 gap-y-2 sm:sticky top-0 z-20  p-2 bg-gray-100 rounded-md">
@@ -91,7 +94,9 @@ const Filters = () => {
           </SelectTrigger>
           <SelectContent>
             {Object.values(CATEGORIES).map((category) => (
-              <SelectItem value={category}>{category}</SelectItem>
+              <SelectItem key={category} value={category}>
+                {category}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -106,7 +111,9 @@ const Filters = () => {
           </SelectTrigger>
           <SelectContent>
             {Object.values(SOURCES).map((source) => (
-              <SelectItem value={source}>{source}</SelectItem>
+              <SelectItem key={source} value={source}>
+                {source}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>

@@ -8,6 +8,8 @@ import { TEXTS } from "texts";
 const Home = () => {
   const { guardianNews, news, nytNews, isFetching } = useFetchNews();
 
+  console.log({ guardianNews, news, nytNews, isFetching });
+
   function emptyState() {
     if (
       !guardianNews?.length &&

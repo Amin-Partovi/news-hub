@@ -23,12 +23,20 @@ function getGuardianNews(params?: CommonQueryParams) {
   });
 }
 
+export const guardianQueryKeys = Object.freeze({
+  all: ["guardian-news"],
+  list: (params?: CommonQueryParams) => [
+    ...guardianQueryKeys.all,
+    ...Object.values(params ?? {}),
+  ],
+});
+
 export function useGuardianNewsQuery(
   params?: CommonQueryParams,
   enabled?: boolean
 ) {
   return useQuery({
-    queryKey: ["guaridan-news", params],
+    queryKey: guardianQueryKeys.list(params),
     queryFn: () => getGuardianNews(params),
     select: (data: GuardianRootData) => data.data.response.results,
     enabled,
