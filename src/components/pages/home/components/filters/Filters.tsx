@@ -1,3 +1,6 @@
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import {
   Input,
   Select,
@@ -7,11 +10,9 @@ import {
   SelectValue,
 } from "components/elements";
 import { DatePicker } from "components/fragments";
-import { TEXTS } from "texts/texts";
+import { TEXTS } from "texts";
 import { CATEGORIES, SOURCES } from "mockData";
-import { useSearchParams } from "react-router-dom";
 import { QueryKeyName, CommonQueryParamKeys } from "types";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { debounce } from "utils";
 
 const Filters = () => {
@@ -60,6 +61,7 @@ const Filters = () => {
           value={searchTerm}
         />
       </div>
+
       <div className="flex flex-col sm:flex-row gap-2 col-span-1">
         <DatePicker
           initialValue={searchParams.get(CommonQueryParamKeys.FROM)}
@@ -71,6 +73,7 @@ const Filters = () => {
           }}
           placeholder={TEXTS.FROM}
         />
+
         <DatePicker
           initialValue={searchParams.get(CommonQueryParamKeys.TO)}
           onChange={(value) => {
@@ -82,6 +85,7 @@ const Filters = () => {
           placeholder={TEXTS.TO}
         />
       </div>
+
       <div className="flex gap-2 col-span-1 flex-col sm:flex-row">
         <Select
           value={searchParams.get(CommonQueryParamKeys.CATEGORY) ?? undefined}
@@ -92,6 +96,7 @@ const Filters = () => {
           <SelectTrigger>
             <SelectValue placeholder={TEXTS.CATEGORIES} />
           </SelectTrigger>
+
           <SelectContent>
             {Object.values(CATEGORIES).map((category) => (
               <SelectItem key={category} value={category}>
@@ -100,6 +105,7 @@ const Filters = () => {
             ))}
           </SelectContent>
         </Select>
+
         <Select
           value={searchParams.get(CommonQueryParamKeys.SOURCE) ?? undefined}
           onValueChange={(value) => {
@@ -109,6 +115,7 @@ const Filters = () => {
           <SelectTrigger>
             <SelectValue placeholder={TEXTS.SOURCES} />
           </SelectTrigger>
+
           <SelectContent>
             {Object.values(SOURCES).map((source) => (
               <SelectItem key={source} value={source}>
@@ -118,6 +125,7 @@ const Filters = () => {
           </SelectContent>
         </Select>
       </div>
+
       <div className="col-span-1">
         <Input
           placeholder={TEXTS.AUTHOR_NAME}

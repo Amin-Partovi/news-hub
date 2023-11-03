@@ -1,11 +1,12 @@
+import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import { SOURCES } from "mockData";
 import {
   useGuardianNewsQuery,
   useNYTNewsQuery,
   useNewsAPIQuery,
 } from "queries";
-import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
 import { CommonQueryParamKeys, CommonQueryParams } from "types";
 
 export function useFetchNews() {

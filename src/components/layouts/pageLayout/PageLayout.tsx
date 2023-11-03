@@ -5,9 +5,11 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full flex flex-col">
       <Header />
+
       <main className="flex-1 py-8">
         <Container>{children}</Container>
       </main>
+
       <Footer />
     </div>
   );

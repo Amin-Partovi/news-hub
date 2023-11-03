@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { ROUTES, Request } from "utils";
 import { NewsAPIRequestParams, NewsAPIRootData } from "./types";
 import { CommonQueryParams } from "types";

@@ -1,8 +1,9 @@
 import { ImageIcon } from "lucide-react";
 
 const ArticleImage = ({ src, alt }: { src?: string; alt: string }) => {
-  if (!src) return <ImageIcon size={100} color="gray" />;
-  return <img src={src} alt={alt} className="w-52" />;
+  if (!src)
+    return <ImageIcon size={100} color="gray" className="flex-shrink-0" />;
+  return <img src={src} alt={alt} className="w-52 flex-shrink-0" />;
 };
 
 export default ArticleImage;

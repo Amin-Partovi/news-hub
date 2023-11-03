@@ -1,14 +1,13 @@
-import { useFetchNews } from "hooks/useFetchNews";
+import { useFetchNews } from "hooks";
+import { TEXTS } from "texts";
+
 import NYTNewsList from "./components/NYTNewsList/NYTNewsList";
 import Filters from "./components/filters/Filters";
 import GuardianNewsList from "./components/guardianNewsList/GuardianNewsList";
 import NewsList from "./components/newsList/NewsList";
-import { TEXTS } from "texts";
 
 const Home = () => {
   const { guardianNews, news, nytNews, isFetching } = useFetchNews();
-
-  console.log({ guardianNews, news, nytNews, isFetching });
 
   function emptyState() {
     if (
@@ -24,10 +23,13 @@ const Home = () => {
   return (
     <>
       <Filters />
+
       {emptyState()}
       <div className="news-grid py-6">
         <GuardianNewsList news={guardianNews} />
+
         <NYTNewsList news={nytNews} />
+
         <NewsList news={news} />
       </div>
     </>

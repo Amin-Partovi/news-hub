@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "components/layouts";
 import { LinkedinIcon, GithubIcon } from "lucide-react";
+
 import { EXTERNAL_LINKS } from "utils";
 
 const Footer = (): React.ReactElement => {
@@ -16,6 +17,7 @@ const Footer = (): React.ReactElement => {
           >
             <LinkedinIcon color="white" size={30} />
           </a>
+
           <a
             href={EXTERNAL_LINKS.GITHUB}
             target="_blank"

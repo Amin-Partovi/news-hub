@@ -81,5 +81,3 @@ export interface GuardianRequestParams {
   "show-references"?: Reference | Reference[];
   "show-tags"?: Tag | Tag[];
 }
-
-// author is missed

@@ -1,18 +1,14 @@
-"use client";
-
 import React, { useEffect } from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "utils";
-
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
   Button,
 } from "components/elements";
-
 import { Calendar } from "components/fragments";
 
 interface Props {

@@ -55,5 +55,3 @@ export interface NewsAPIRequestParams {
   pageSize?: number;
   page?: number;
 }
-
-// author is missed

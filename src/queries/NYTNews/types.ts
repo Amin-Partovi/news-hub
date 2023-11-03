@@ -106,5 +106,3 @@ export interface NYTRequestParams {
   page?: number;
   source?: string; //category
 }
-
-// author is missed
