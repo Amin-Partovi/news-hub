@@ -2,45 +2,122 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## How to run project
 
-In the project directory, you can run:
+**Package Manager**
+In the project directory, you can use Yarn as the package manager. First, run:
 
-### `npm start`
+    yarn
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This command installs all the project's dependencies. To start the local development server, use the following command:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    yarn start
 
-### `npm test`
+The project will be accessible at [http://localhost:3000](http://localhost:3000/).
+To build the project for production use the following command:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    yarn build
 
-### `npm run build`
+To serve the production build, you can use the following command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    serve -s build
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Again, the project will be accessible at [http://localhost:3000](http://localhost:3000/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Docker**
+To run the project in a Docker container, execute the following command to create an image and run a container:
 
-### `npm run eject`
+    docker compose up
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Now the project is available at [http://localhost:3000](http://localhost:3000/).
+If you need to stop the container, first, get a list of running containers using:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    docker container ls
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Then stop the container using:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    docker stop <container-name>
 
-## Learn More
+## Folder structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+the structure of the project is inspired by Atomic Design.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+.
+└── src/
+├── components/
+│ ├── elements/
+│ │ ├── button/
+│ │ │ ├── Button.tsx
+│ │ │ └── Button.test.js
+│ │ ├── input
+│ │ ├── select
+│ │ ├── ...
+│ │ └── index.ts
+│ ├── fragments/
+│ │ ├── articleCard/
+│ │ │ ├── ArticleCard.tsx
+│ │ │ └── ArticleCard.test.js
+│ │ ├── datePicker
+│ │ ├── ...
+│ │ └── index.ts
+│ ├── layout/
+│ │ ├── header/
+│ │ │ └── Header.tsx
+│ │ ├── footer
+│ │ ├── container
+│ │ ├── pageLayout
+│ │ ├── ...
+│ │ └── index.ts
+│ └── pages/
+│ ├── home/
+│ │ ├── components/
+│ │ │ ├── Filters.tsx
+│ │ │ └── GuardianNewsList.tsx
+│ │ ├── ...
+│ │ └── Home.tsx
+│ └── index.ts
+├── utils/
+│ ├── formateDate
+│ ├── request
+│ ├── ...
+│ └── index.ts
+├── hooks/
+│ ├── useFetchNews.ts
+│ ├── ...
+│ └── index.ts
+├── queries/
+│ ├── guardian/
+│ │ ├── GuardianQuery.ts
+│ │ ├── types.ts
+│ │ └── ...
+│ ├── newsAPI/
+│ │ └── newsAPIQuery.ts
+│ ├── ...
+│ └── index.ts
+└── types/
+├── commonQueryTypes.ts
+├── ...
+└── index.ts
+
+components folder divided to four modules as following:
+
+1.  Elements: This folder contains shared components, also known as common components, that cannot be further divided into smaller independent components.
+2.  Fragments: Fragments are reusable components that are built using elements. They combine multiple elements to form more complex and self-contained components.
+3.  Layouts: The layouts folder encompasses components related to the overall layout and container structure of the application. These components define the high-level structure and positioning of other components.
+4.  Pages: The pages folder contains components specific to individual pages. These components are unique to a particular.
+
+In addition to these modules, there are other ones such as utils, hooks, queries, ...
+
+Within this architecture, each module has its own index file that serves as a central point of export for all the components within that module.
+
+## About the project
+
+The project relies on three APIs: _The Guardian_, _NewsAPI_, and _The New York Times_, to provide data. The results are displayed in a list format.
+
+Users have the flexibility to filter this data based on search queries, date, source, and category. Importantly, these filters are maintained in the URL, and they persist even after refreshing the page. The filter parameters are sent to the API request to filter the data on the server side.
+
+Data fetching is efficiently handled by React Query, which not only retrieves data but also caches and stores it on the client side. As a result, if the filter values (parameters) remain the same, new network requests won't be generated. However, the data does have a set expiration period (30 seconds in this project) to prevent staleness.
+
+Since not all data sources allow filtering by author name, NewsAPI data as an example is filtered by the author's name on the client side.
+
+It's worth noting that due to time constraints, tests were only written for specific components and cases, and not all aspects of the project were covered.
