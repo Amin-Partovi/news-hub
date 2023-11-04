@@ -2,9 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## How to run project
+# How to run project
 
-**Package Manager**
+## Package Manager
+
+
 In the project directory, you can use Yarn as the package manager. First, run:
 
     yarn
@@ -24,7 +26,9 @@ To serve the production build, you can use the following command:
 
 Again, the project will be accessible at [http://localhost:3000](http://localhost:3000/).
 
-**Docker**
+## Docker
+
+
 To run the project in a Docker container, execute the following command to create an image and run a container:
 
     docker compose up
@@ -38,66 +42,69 @@ Then stop the container using:
 
     docker stop <container-name>
 
-## Folder structure
+# Folder structure
 
 the structure of the project is inspired by Atomic Design.
 
-.
-└── src/
-├── components/
-│ ├── elements/
-│ │ ├── button/
-│ │ │ ├── Button.tsx
-│ │ │ └── Button.test.js
-│ │ ├── input
-│ │ ├── select
-│ │ ├── ...
-│ │ └── index.ts
-│ ├── fragments/
-│ │ ├── articleCard/
-│ │ │ ├── ArticleCard.tsx
-│ │ │ └── ArticleCard.test.js
-│ │ ├── datePicker
-│ │ ├── ...
-│ │ └── index.ts
-│ ├── layout/
-│ │ ├── header/
-│ │ │ └── Header.tsx
-│ │ ├── footer
-│ │ ├── container
-│ │ ├── pageLayout
-│ │ ├── ...
-│ │ └── index.ts
-│ └── pages/
-│ ├── home/
-│ │ ├── components/
-│ │ │ ├── Filters.tsx
-│ │ │ └── GuardianNewsList.tsx
-│ │ ├── ...
-│ │ └── Home.tsx
-│ └── index.ts
-├── utils/
-│ ├── formateDate
-│ ├── request
-│ ├── ...
-│ └── index.ts
-├── hooks/
-│ ├── useFetchNews.ts
-│ ├── ...
-│ └── index.ts
-├── queries/
-│ ├── guardian/
-│ │ ├── GuardianQuery.ts
-│ │ ├── types.ts
-│ │ └── ...
-│ ├── newsAPI/
-│ │ └── newsAPIQuery.ts
-│ ├── ...
-│ └── index.ts
-└── types/
-├── commonQueryTypes.ts
-├── ...
-└── index.ts
+
+    .
+    src/
+    ├── components/
+    │   ├── elements/
+    │   │   ├── button/
+    │   │   │   ├── Button.tsx
+    │   │   │   └── Button.test.js
+    │   │   ├── input
+    │   │   ├── select
+    │   │   ├── ...
+    │   │   └── index.ts
+    │   ├── fragments/
+    │   │   ├── articleCard/
+    │   │   │   ├── ArticleCard.tsx
+    │   │   │   └── ArticleCard.test.js
+    │   │   ├── datePicker
+    │   │   ├── ...
+    │   │   └── index.ts
+    │   ├── layout/
+    │   │   ├── header/
+    │   │   │   └── Header.tsx
+    │   │   ├── footer
+    │   │   ├── container
+    │   │   ├── pageLayout
+    │   │   ├── ...
+    │   │   └── index.ts
+    │   └── pages/
+    │       ├── home/
+    │       │   ├── components/
+    │       │   │   ├── Filters.tsx
+    │       │   │   └── GuardianNewsList.tsx
+    │       │   ├── ...
+    │       │   └── Home.tsx
+    │       └── index.ts
+    ├── utils/
+    │   ├── formateDate
+    │   ├── request
+    │   ├── ...
+    │   └── index.ts
+    ├── hooks/
+    │   ├── useFetchNews.ts
+    │   ├── ...
+    │   └── index.ts
+    ├── queries/
+    │   ├── guardian/
+    │   │   ├── GuardianQuery.ts
+    │   │   ├── types.ts
+    │   │   └── ...
+    │   ├── newsAPI/
+    │   │   └── newsAPIQuery.ts
+    │   ├── ...
+    │   └── index.ts
+    └── types/
+        ├── commonQueryTypes.ts
+        ├── ...
+        └── index.ts
+
+
 
 components folder divided to four modules as following:
 
@@ -110,7 +117,7 @@ In addition to these modules, there are other ones such as utils, hooks, queries
 
 Within this architecture, each module has its own index file that serves as a central point of export for all the components within that module.
 
-## About the project
+# About the project
 
 The project relies on three APIs: _The Guardian_, _NewsAPI_, and _The New York Times_, to provide data. The results are displayed in a list format.
 
