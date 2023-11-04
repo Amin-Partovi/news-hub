@@ -1,0 +1,31 @@
+# version: '3.8'
+# services:
+#   news-hub-react:
+#     build: .
+#     container_name: news-hub-react_c
+#     ports:
+#     - '3000:3000'
+#     stdin_open: true
+#     tty: true
+
+# services:
+#   frontend:
+#     build:
+#       context: .
+#     container_name: frontend
+#     ports:
+#       - "80:80"
+
+version: "3.8"
+
+services:
+  app:
+    container_name: app-dev
+    image: app-dev
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
