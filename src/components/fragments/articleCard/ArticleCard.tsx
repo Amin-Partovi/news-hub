@@ -28,7 +28,7 @@ const ArticleCard = ({
           <CardTitle>{title}</CardTitle>
 
           <CardContent>
-            <div className="flex justify-between gap-3">
+            <div className="flex justify-between gap-4">
               <ArticleImage src={img} alt={title} />
 
               <div className="flex flex-col gap-2">

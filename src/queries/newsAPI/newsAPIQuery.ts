@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ROUTES, Request } from "utils";
 import { NewsAPIRequestParams, NewsAPIRootData } from "./types";
 import { CommonQueryParams } from "types";
+import { transformData } from "./transformData";
 
 const INITIAL_PARAMS: NewsAPIRequestParams = {
   domains: "techcrunch.com",
@@ -11,12 +12,13 @@ const INITIAL_PARAMS: NewsAPIRequestParams = {
 };
 
 function getNewsAPI(params?: CommonQueryParams) {
+  const modifiedParams = transformData(params);
   return Request<NewsAPIRootData, Error>({
     endpoint: ROUTES.getNewsList,
     params: {
       apiKey: process.env.REACT_APP_NEWS_API_KEY as string,
       ...INITIAL_PARAMS,
-      ...params,
+      ...modifiedParams,
     },
   });
 }
